@@ -10,7 +10,7 @@
 <style>
 	body {
 		fonst-size: 12px;
-		color: #666;
+		color: #333;
 		font-family: 맑은 고딕;
 	}
 
@@ -74,8 +74,20 @@
 		</nav>
 		
 		<section>
-			<div style="width:100%; height:50px; text-align:center;">
-				친구관리 프로그램
+			<br>
+			<h2 align="center">친구관리 프로그램</h2>
+			<div>
+				<h4>
+					&nbsp; SNS에서 회원정보, 친구정보 데이터베이스를 구축하고 ~~  프로그램을 작성한다. <br>
+					&nbsp; 프로그램 작성 순서
+				</h4>
+					<ol>
+						<li>회원정보 테이블을 생성한다.</li>
+						<li>친구정보 테이블을 생성한다.</li>
+						<li>회원정보 입력 화면프로그램을 작성한다.</li>
+						<li>회원정보 조회/수정 프로그램을 작성한다.</li>
+						<li>친구 정보 조회 프로그램을 작성한다.</li>
+					</ol>
 			</div>
 		</section>
 		
