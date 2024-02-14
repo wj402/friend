@@ -3,13 +3,25 @@
  
 <%@ include file ="database.jsp" %>
 <%
+	// 1. 데이타 베이스로 해결 (mysql)
+	/* String sql = "SELECT ";
+		   sql+= "	member_no       no, ";
+		   sql+= "	member_id       id, ";
+		   sql+= "	member_name   name, ";	
+		   sql+= "	if(member_grade='S', '특별', if(member_grade='A', '우수', '일반'))  grade, ";
+		   sql+= "	ifnull(member_hobby, ' ') hobby, ";
+		   sql+= "	date_format(member_date, '%Y.%m.%d')  date";
+		   sql+= " FROM ";
+		   sql+= "	member_tbl";
+		   sql+= "	ORDER BY member_no DESC"; */
+		   
 	String sql = "SELECT ";
 		   sql+= "	member_no       no, ";
 		   sql+= "	member_id       id, ";
 		   sql+= "	member_name   name, ";	
 		   sql+= "	member_grade grade, ";
 		   sql+= "	member_hobby hobby, ";
-		   sql+= "	member_date  date";
+		   sql+= "	member_date date";
 		   sql+= " FROM ";
 		   sql+= "	member_tbl";
 		   sql+= "	ORDER BY member_no DESC";
@@ -56,10 +68,19 @@
 						String grade = rs.getString("grade");
 						String hobby = rs.getString("hobby");
 						String date = rs.getString("date");
+						
+						// S, A, B
+						if(grade.equals("S")) grade = "특별";
+						else if(grade.equals("A")) grade = "우수";
+						else grade = "일반";
+						
+						if(hobby == null) hobby = "";
+						date = date.replace("-", ".");
+						
 				%>
 					<tr align="center">
 						<td><%=no %></td>
-						<td><%=id %></td>
+						<td><a href="memberModify.jsp?no=<%=no %>"><%=id %></a></td>
 						<td><%=name %></td>
 						<td><%=grade %></td>
 						<td><%=hobby %></td>
