@@ -1,29 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ page import="java.sql.*"%>    
+       
 <%@ page import="java.util.Calendar"%>
+<%@ include file="database.jsp" %>
  
 <%	
-	String url = "jdbc:mysql://localhost:3306/apple?useUnicode=true&characterEncoding=utf8";
-	String username = "root";
-	String userpass = "apmsetup";
-	// 접속드라이버 연결x
-	Class.forName("com.mysql.jdbc.Driver");
-	// 접속정보 세팅
-	Connection conn = DriverManager.getConnection(url,username,userpass);
-	// 접속한 MySQL의 SQL실행 결과를 위한 메모리 공간 확보
-	Statement stmt = conn.createStatement(); // 인스턴스화(객체화==메모리에올림)
-	
-	String sql = "select max(member_no)+1 myno from membeR_tbl";
+	String sql = "select max(member_no)+1 myno from member_tbl";
 	ResultSet rs = stmt.executeQuery(sql);
 	rs.next();
 	int myno = rs.getInt("myno");
 	
 	Calendar cal = Calendar.getInstance();
-	int y = cal.get(Calendar.YEAR);
-	int m = cal.get(Calendar.MONTH)+1; // 0월~11월
-	int d = cal.get(Calendar.DATE);
+	String y = cal.get(Calendar.YEAR) + "";
+	String m = (cal.get(Calendar.MONTH)+1) + ""; // 0월~11월
+	String d = cal.get(Calendar.DATE) + "";
+	
+	if( Integer.parseInt(m) < 10 ) m = "0" + m;
 	String date = y+ "/" +m+ "/" +d;
 %> 
  
@@ -87,10 +79,11 @@
 						<tr>
 							<th>등급</th>
 							<td>
-								<select name="grade" multiple>
-									<option>특별회원</option>
-									<option>우수회원</option>
-									<option>일반회원</option>
+								<!-- multiple 속성은 다중선택 -->
+								<select name="grade" size="4">
+									<option value="S">특별회원</option>
+									<option value="A">우수회원</option>
+									<option value="B">일반회원</option>
 								</select>
 							</td>
 						</tr>
