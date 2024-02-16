@@ -50,25 +50,26 @@
 	}
 	
 	
-	
-	
-
-	String sql = "INSERT INTO member_tbl";
-		   sql+= "( member_no, member_id, member_name, member_grade, member_hobby, member_date )";
-		   sql+= "VALUES('"+no+"','"+id+"','"+name+"','"+grade+"','"+str+"','"+date+"')";
+	String sql = "UPDATE member_tbl SET ";
+		   sql+= "		member_id='"+id+"',";
+		   sql+= "		member_name='"+name+"',"; 
+		   sql+= "		member_grade='"+grade+"',";
+		   sql+= "		member_hobby='"+str+"',"; 
+		   sql+= "		member_date='"+date+"' ";
+		   sql+= "	WHERE member_no='"+no+"' ";
 		   
 	int result = stmt.executeUpdate(sql); // result = 1;
 	if( result == 1) {
 %>
 	<script>
-		alert("저장완료");
+		alert("수정완료");
 		location="index.jsp";
 	</script>
 <%
 	} else {
 %>
 	<script>
-		alert("저장실패");
+		alert("수정실패");
 		location="index.jsp";
 	</script>
 <%
