@@ -90,6 +90,7 @@
 			<h2 align="center">친구(회원)수정 화면</h2>
 			<div> 
 				<form name="frm" method="post" action="memberModifySave.jsp">
+					<input type="hidden" name="no" value="<%=no %>">
 					<table border="1" width="600" align="center">
 						<tr>
 							<th>회원번호</th>
@@ -129,7 +130,7 @@
 						</tr>
 					</table>
 					<div style="text-align:center; width:100%;">
-						<button type="submit" onclick="fn_submit(); return false;">등록</button>
+						<button type="submit" onclick="fn_submit(); return false;">수정</button>
 						&nbsp;
 						<button type="button" onclick="location='memberList.jsp' ">조회</button>	
 					</div>
